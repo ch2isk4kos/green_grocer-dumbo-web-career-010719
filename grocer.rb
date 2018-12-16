@@ -31,27 +31,40 @@ end
 # end
 
 # def apply_coupons(cart, coupons)
-#     # code here
+#   # code here
+#   result = {}
+#   cart.each do |food, info|
+#       coupons.each do |coupon|
+#           if food == coupon[:item] && info[:count] >= coupon[:num]
+#               info[:count] =  info[:count] - coupon[:num]
+#               if result["#{food} W/COUPON"]
+#                   result["#{food} W/COUPON"][:count] += 1
+#               else
+#                   result["#{food} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => 1}
+#               end
+#           end
+#       end
+#       result[food] = info
+#     end
+#     result
 # end
 
 def apply_coupons(cart, coupons)
-  # code here
-  result = {}
-  cart.each do |food, info|
+  # code here	  
+    cart.keys.each do |item|
     coupons.each do |coupon|
-      if food == coupon[:item] && info[:count] >= coupon[:num]
-        info[:count] =  info[:count] - coupon[:num]
-        if result["#{food} W/COUPON"]
-          result["#{food} W/COUPON"][:count] += 1
+      if item == coupon[:item] && cart[item][:count] >= coupon[:num]
+        cart[item][:count] -= coupon[:num]
+        if cart["#{coupon[:item]} W/COUPON"]
+          cart["#{coupon[:item]} W/COUPON"][:count] += 1
         else
-          result["#{food} W/COUPON"] = {:price => coupon[:cost], :clearance => info[:clearance], :count => 1}
+          cart["#{coupon[:item]} W/COUPON"] = {:price => coupon[:cost], :clearance => cart[item][:clearance], :count => 1}
         end
-      end
-    end
-    result[food] = info
+      end   
+    end  
   end
-  result
-end
+  cart
+end	
 
 def apply_clearance(cart)
     # code here
