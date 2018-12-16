@@ -2,9 +2,9 @@
 #     # code here
 #     cart.each do |item|
 #         item.each do |keys, values|
-#             keys.each 
-#     
-# 
+#             keys.each
+#
+#
 # end
 
 def consolidate_cart(cart:[])
@@ -17,7 +17,7 @@ def consolidate_cart(cart:[])
     end
   end
     new_hash
-end	end
+end
 
 def apply_coupons(cart, coupons)
     # code here
