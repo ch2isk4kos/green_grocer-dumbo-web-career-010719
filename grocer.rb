@@ -91,5 +91,5 @@ end 	  consolidated = consolidate_cart(cart: cart)
   else
     total
   end
-  total  
+  total
 end
