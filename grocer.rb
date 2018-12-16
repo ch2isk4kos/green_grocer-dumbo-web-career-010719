@@ -34,7 +34,7 @@ end
 #     # code here
 # end
 
-def apply_coupons(cart:[], coupons:[])
+def apply_coupons(cart, coupons)
   # code here
   result = {}
   cart.each do |food, info|
