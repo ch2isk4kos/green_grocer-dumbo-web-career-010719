@@ -78,49 +78,39 @@ def apply_clearance(cart)
     cart
 end
 
-
 def checkout(cart, coupons)
-  # code here
-  cart = consolidate_cart(cart: cart)
-  cart = apply_coupons(cart: cart, coupons: coupons)
-  cart = apply_clearance(cart: cart)
-  total = 0
-  cart.each {|grocery,value| total += (cart[grocery][:price] * cart[grocery][:count]) if cart[grocery][:count] > 0}
-  total > 100 ? (total*0.9).round(2) : total
+    # code here
+    total = 0
+    cart = consolidate_cart(cart)
+
+    if cart.length == 1
+        cart = apply_coupons(cart, coupons)
+        cart_clearance = apply_clearance(cart)
+
+        if cart_clearance.length > 1
+            cart_clearance.each do |item, details|
+                if details[:count] >=1
+                    total += (details[:price]*details[:count])
+                end
+            end
+        else
+            cart_clearance.each do |item, details|
+                total += (details[:price]*details[:count])
+            end
+        end
+    else
+        cart = apply_coupons(cart, coupons)
+        cart_clearance = apply_clearance(cart)
+        cart_clearance.each do |item, details|
+            total += (details[:price]*details[:count])
+        end
+    end
+
+    if total > 100
+        total = total*(0.90)
+    end
+    total
 end
-# def checkout(cart, coupons)
-#     # code here
-#     total = 0
-#     cart = consolidate_cart(cart)
-#
-#     if cart.length == 1
-#         cart = apply_coupons(cart, coupons)
-#         cart_clearance = apply_clearance(cart)
-#
-#         if cart_clearance.length > 1
-#             cart_clearance.each do |item, details|
-#                 if details[:count] >=1
-#                     total += (details[:price]*details[:count])
-#                 end
-#             end
-#         else
-#             cart_clearance.each do |item, details|
-#                 total += (details[:price]*details[:count])
-#             end
-#         end
-#     else
-#         cart = apply_coupons(cart, coupons)
-#         cart_clearance = apply_clearance(cart)
-#         cart_clearance.each do |item, details|
-#             total += (details[:price]*details[:count])
-#         end
-#     end
-#
-#     if total > 100
-#         total = total*(0.90)
-#     end
-#     total
-# end
 
 # {
 #   "AVOCADO" => {:price => 3.0, :clearance => true, :count => 1},
