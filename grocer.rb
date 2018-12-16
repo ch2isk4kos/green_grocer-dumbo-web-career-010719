@@ -1,17 +1,17 @@
 def consolidate_cart(cart)
-  # code here
-  cart_array = []
-  
+    # code here
+    cart_array = []
+
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+    # code here
 end
 
 def apply_clearance(cart)
-  # code here
+    # code here
 end
 
 def checkout(cart, coupons)
-  # code here
+    # code here
 end
