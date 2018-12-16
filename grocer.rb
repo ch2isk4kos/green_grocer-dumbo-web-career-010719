@@ -7,7 +7,7 @@
 #
 # end
 
-def consolidate_cart(cart:[])
+def consolidate_cart(cart)
   # code here
   new_hash = {}
   cart.each do |item|
