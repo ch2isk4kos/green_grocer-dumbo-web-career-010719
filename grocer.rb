@@ -10,12 +10,12 @@
 def consolidate_cart(cart)
     new_hash = {}
 
-    cart.each_with_index do |item, i|
-        item.each do |food, info|
+    cart.each_with_index do |item|
+        item.each do |food, value|
             if new_hash[food]
                 new_hash[food][:count] += 1
             else
-                new_hash[food] = info
+                new_hash[food] = value
                 new_hash[food][:count] = 1
             end
         end
