@@ -8,17 +8,33 @@
 # end
 
 def consolidate_cart(cart)
-  # code here
-  new_hash = {}
-  cart.each do |item|
-    item.each do |food, item|
-      item[:count] = 0
-      item[:count] += 1
-      new_hash[food] = item
+  result = {}
+  # code here	  # code here
+  cart.each_with_index do |item, i|
+    item.each do |food, info|
+      if result[food]
+        result[food][:count] += 1
+      else
+        result[food] = info
+        result[food][:count] = 1
+      end
     end
   end
-    new_hash
-end
+  result
+end	end
+
+# def consolidate_cart(cart)
+#   # code here
+#   new_hash = {}
+#   cart.each do |item|
+#     item.each do |food, item|
+#       item[:count] = 0
+#       item[:count] += 1
+#       new_hash[food] = item
+#     end
+#   end
+#     new_hash
+# end
 
 def apply_coupons(cart, coupons)
     # code here
