@@ -21,7 +21,7 @@ def consolidate_cart(cart)
     end
   end
   result
-end	end
+end
 
 # def consolidate_cart(cart)
 #   # code here
