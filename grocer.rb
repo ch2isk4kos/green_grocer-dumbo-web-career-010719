@@ -1,12 +1,3 @@
-# def consolidate_cart(cart)
-#     # code here
-#     cart.each do |item|
-#         item.each do |keys, values|
-#             keys.each
-#
-#
-# end
-
 def consolidate_cart(cart)
     new_hash = {}
 
