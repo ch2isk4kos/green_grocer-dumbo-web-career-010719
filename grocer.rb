@@ -91,5 +91,5 @@ def checkout(cart: [], coupons: [])
   else
     total
   end
-  total  
+  total
 end
