@@ -15,20 +15,19 @@
 # end
 
 def consolidate_cart(item)
-    final = Hash.new 0
-    # count = :count
+    new_hash = Hash.new 0
 
     item.each do |hash|
         hash.each do |food, description|
-            if final.has_key?(food) == false
-                final[food] = description
-                final[food][:count] = 1
-            elsif final.has_key?(food)
-                final[food][:count] +=1
+            if new_hash.has_key?(food) == false
+                new_hash[food] = description
+                new_hash[food][:count] = 1
+            elsif new_hash.has_key?(food)
+                new_hash[food][:count] +=1
             end
         end
     end
-    final
+    new_hash
 end
 
 def apply_coupons(cart, coupons)
